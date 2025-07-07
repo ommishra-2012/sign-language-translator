@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Speech ↔ Sign Language Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      flex: 1 1 400px;
+      margin: 10px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.4em;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 5px;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #sign-display, #prediction {
+      margin-top: 15px;
+      font-size: 1.1em;
+    }
+
+    .word-line {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    #video {
+      width: 100%;
+      border-radius: 4px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 10px;
+      }
+    }
+
+    .big-sign-img {
+  max-height: 120px;
+  margin-right: 5px;
+}
+
+.small-sign-img {
+  max-height: 50px;
+  margin-right: 3px;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="section">
+    <h2>Speech to Sign</h2>
+    <button id="mic-btn">🎤 Start Listening</button>
+    <p id="output-text">You said: </p>
+    <div id="sign-display"></div>
+  </div>
+
+  <div class="section">
+    <h2>Sign to Speech</h2>
+    <video id="video" autoplay></video>
+    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+    <div>
+      <button id="start-sign-btn">▶️ Start Recognition</button>
+      <button id="stop-sign-btn" style="display:none;">⏹ Stop Recognition</button>
+      <button id="capture-btn">📸 Capture & Predict</button>
+    </div>
+    <p>Predicted Letter: <span id="prediction-result">None</span></p>
+  </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/speech_to_sign.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sign_to_speech.js') }}"></script>
+</body>
+</html>
