@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: speech-sign-converter
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    plan: free
