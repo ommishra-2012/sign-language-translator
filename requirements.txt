@@ -1,6 +1,7 @@
 Flask
 gunicorn
+mediapipe
 numpy
 opencv-python
-mediapipe
 tensorflow
+scikit-learn
