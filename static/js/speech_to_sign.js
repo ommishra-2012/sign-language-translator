@@ -47,7 +47,7 @@ function startListening() {
                     let img = document.createElement('img');
                     img.src = `/static/converter/signs/${phrase}.gif`;
                     img.alt = phrase;
-                    img.classList.add('big-sign-img'); // BIG for phrases
+                    img.classList.add('big-sign-img');
                     lineDiv.appendChild(img);
 
                     signDisplay.appendChild(lineDiv);
@@ -66,7 +66,7 @@ function startListening() {
                     let img = document.createElement('img');
                     img.src = `/static/converter/signs/${word}.gif`;
                     img.alt = word;
-                    img.classList.add('big-sign-img'); // BIG for known words
+                    img.classList.add('big-sign-img');
                     lineDiv.appendChild(img);
                 } else {
                     for (let char of word) {
@@ -74,7 +74,7 @@ function startListening() {
                             let img = document.createElement('img');
                             img.src = `/static/converter/signs/letters/${char}.gif`;
                             img.alt = char;
-                            img.classList.add('small-sign-img'); // SMALL for letters
+                            img.classList.add('small-sign-img');
                             img.style.width = `${Math.floor(100 / word.length)}%`;
                             lineDiv.appendChild(img);
                         }
@@ -92,5 +92,4 @@ function startListening() {
     };
 }
 
-// ✅ Make sure you have this!
 document.getElementById('mic-btn').addEventListener('click', startListening);

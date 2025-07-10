@@ -1,5 +1,4 @@
 import os
-# Reduce TensorFlow logs
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 from flask import Flask, render_template, request, jsonify
@@ -13,12 +12,10 @@ import pickle
 
 app = Flask(__name__)
 
-# Load model and label encoder
 model = load_model('model.h5')
 with open('label_encoder.pkl', 'rb') as f:
     label_encoder = pickle.load(f)
 
-# Initialize MediaPipe Hands (static image mode: True)
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
     static_image_mode=True,
@@ -36,7 +33,6 @@ def predict_sign():
     if 'image' not in data:
         return jsonify({'prediction': 'No image received'}), 400
 
-    # Decode base64 image
     image_data = re.sub('^data:image/.+;base64,', '', data['image'])
     image_bytes = base64.b64decode(image_data)
     nparr = np.frombuffer(image_bytes, np.uint8)

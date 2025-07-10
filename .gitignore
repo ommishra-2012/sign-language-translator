@@ -1,14 +1,7 @@
-# Ignore Python cache and temporary files
 __pycache__/
 *.pyc
-
-# Ignore virtual environments
 venv/
 .env/
-
-# Ignore model and data files (if you don’t want them on GitHub)
 *.h5
 *.pkl
-
-# Ignore Mac hidden files
 .DS_Store
